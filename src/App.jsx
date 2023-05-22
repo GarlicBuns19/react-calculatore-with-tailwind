@@ -24,21 +24,15 @@ function App() {
                             <Button buttonLabel={'7'}></Button>
                             <Button buttonLabel={'8'}></Button>
                             <Button buttonLabel={'9'}></Button>
-                            <div
-                                className={"row-span-2 p-5 flex justify-center items-center bg-sky-900 rounded-md hover:bg-sky-700 ease-in duration-300"}>+
-                            </div>
+                            <Button buttonLabel={'+'} className={"row-span-2 flex justify-center items-center"}></Button>
                             <Button buttonLabel={'4'}></Button>
                             <Button buttonLabel={'5'}></Button>
                             <Button buttonLabel={'6'}></Button>
                             <Button buttonLabel={'1'}></Button>
                             <Button buttonLabel={'2'}></Button>
                             <Button buttonLabel={'3'}></Button>
-                            <div
-                                className={"row-span-2 p-5 flex justify-center items-center bg-indigo-900 rounded-md hover:bg-indigo-700 ease-in duration-300"}>=
-                            </div>
-                            <div
-                                className={"col-span-2 p-5 bg-pink-900 rounded-md hover:bg-pink-700 ease-in duration-300"}>0
-                            </div>
+                            <Button buttonLabel={'='} className={"row-span-2 flex justify-center items-center"}></Button>
+                            <Button buttonLabel={'0'} className={"col-span-2 text-left"}></Button>
                             <Button buttonLabel={'.'}></Button>
                         </div>
                     </CalculatorProvider>
