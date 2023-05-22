@@ -6,7 +6,7 @@ const CalculatorDispatch = createContext(null);
 const initialCalculator = {
     history: [],
     evaluationString: '',
-    result: 999
+    result: 9
 }
 
 export function CalculatorProvider({children}) {
@@ -24,7 +24,7 @@ export function CalculatorProvider({children}) {
     );
 }
 
-CalculatorProvider.prototype = {
+CalculatorProvider.propTypes = {
     children: PropTypes.element
 }
 
@@ -42,3 +42,5 @@ function calculatorReducer(event, action) {
             throw Error('Unknown action: ' + action.type)
     }
 }
+
+export {initialCalculator, calculatorReducer};

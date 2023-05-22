@@ -1,16 +1,16 @@
 import {Button} from './components/Button';
-import {CalculatorProvider, useCalculator} from "./contexts/Calculator.jsx";
+import {CalculatorProvider, useCalculator, initialCalculator} from "./contexts/Calculator.jsx";
+import {useReducer} from "react";
 
 function App() {
-    const calculator = useCalculator();
-    console.log(calculator)
+    const [state, dispatch] = useReducer(useCalculator, initialCalculator);
 
     return (
         <>
             <div className="container mx-w-sm bg-slate-800">
                 <div className={"text-zinc-300 font-offSide grid place-content-center w-full h-screen"}>
                     <div className={"mb-2 p-2 border-2 border-solid rounded-md"}>
-                        <div className={"p-5 text-lg text-right bg-zinc-600 rounded-md"}></div>
+                        <div className={"p-5 text-lg text-right bg-zinc-600 rounded-md"}>{state.result}</div>
                     </div>
                     <CalculatorProvider>
                         <div className={"p-3 grid gap-3 grid-cols-4 grid-rows-5 border-2 border-solid rounded-md"}>
