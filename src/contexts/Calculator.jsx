@@ -10,14 +10,14 @@ const initialCalculator = {
 }
 
 export function CalculatorProvider({children}) {
-    const [event, action] = useReducer(
+    const [event, dispatch] = useReducer(
         calculatorReducer,
         initialCalculator
     );
 
     return (
         <CalculatorContext.Provider value={event}>
-            <CalculatorDispatch.Provider value={action}>
+            <CalculatorDispatch.Provider value={dispatch}>
                 {children}
             </CalculatorDispatch.Provider>
         </CalculatorContext.Provider>
