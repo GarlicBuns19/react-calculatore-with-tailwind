@@ -10,13 +10,11 @@ function App() {
                     <div className={"text-zinc-300 font-offSide grid place-content-center w-full h-screen"}>
                         <Head></Head>
                         <div className={"p-3 grid gap-3 grid-cols-4 grid-rows-5 border-2 border-solid rounded-md"}>
-                            {/*Math Functionality Buttons*/}
                             <Button buttonLabel={'C'} style={"red"}></Button>
                             <Button buttonLabel={'X'} style={"orange"}></Button>
                             <Button buttonLabel={'-'} style={"orange"}></Button>
                             <Button buttonLabel={'%'} style={"orange"}></Button>
 
-                            {/*Number Buttons*/}
                             <Button buttonLabel={'7'}></Button>
                             <Button buttonLabel={'8'}></Button>
                             <Button buttonLabel={'9'}></Button>
