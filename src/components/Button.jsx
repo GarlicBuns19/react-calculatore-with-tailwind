@@ -18,4 +18,3 @@ Button.propTypes = {
     className: PropTypes.string,
     style: PropTypes.string
 }
-
