@@ -40,13 +40,15 @@ export function useCalculatorDispatch() {
 function calculatorReducer(state, action) {
     switch (action.type) {
         case 'input': {
+            if (action.btnValue === 'X') action.btnValue = '*';
+
             return {
                 ...state, evaluationString: `${state.evaluationString}${action.btnValue}`
             }
         }
         case 'equal': {
             return {
-                ...state, evaluationString: '', result: math.evaluate(`${state.evaluationString}`)
+                ...state, evaluationString: evaluate(`${state.evaluationString}`), result: evaluate(`${state.evaluationString}`)
             }
         }
         default:
