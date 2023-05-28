@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import {useCalculatorDispatch} from "../contexts/Calculator.jsx";
 
 const buttonStyles = {
     normal: 'bg-slate-500 hover:bg-slate-600 ease-in duration-300',
@@ -7,9 +8,16 @@ const buttonStyles = {
 }
 
 export function Button(props) {
+    const dispatch = useCalculatorDispatch();
+
     return (
         <button className={`p-5 rounded-md ${buttonStyles[props.style || 'normal']} ${props.className}`}
-                onClick={props.onClick}>
+                onClick={() => {
+                    dispatch({
+                        type: props.inputType || 'input',
+                        btnValue: props.buttonLabel
+                    })
+                }}>
             {props.buttonLabel}
         </button>
     )
@@ -18,5 +26,6 @@ export function Button(props) {
 Button.propTypes = {
     buttonLabel: PropTypes.string,
     className: PropTypes.string,
-    style: PropTypes.string
+    style: PropTypes.string,
+    inputType: PropTypes.string,
 }
