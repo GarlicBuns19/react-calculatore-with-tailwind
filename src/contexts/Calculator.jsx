@@ -7,17 +7,17 @@ const CalculatorDispatch = createContext(null);
 const initialCalculator = {
     history: [],
     evaluationString: '',
-    result: 9
+    result: 0
 }
 
 export function CalculatorProvider({children}) {
-    const [tasks, dispatch] = useReducer(
+    const [state, dispatch] = useReducer(
         calculatorReducer,
         initialCalculator
     );
 
     return (
-        <CalculatorContext.Provider value={tasks}>
+        <CalculatorContext.Provider value={state}>
             <CalculatorDispatch.Provider value={dispatch}>
                 {children}
             </CalculatorDispatch.Provider>
@@ -37,14 +37,17 @@ export function useCalculatorDispatch() {
     return useContext(CalculatorDispatch);
 }
 
-function calculatorReducer(tasks, action) {
-    console.log(tasks)
+function calculatorReducer(state, action) {
     switch (action.type) {
         case 'input': {
-            return tasks;
+            return {
+                ...state, evaluationString: `${state.evaluationString}${action.btnValue}`
+            }
         }
         case 'equal': {
-            return initialCalculator.result = initialCalculator.evaluationString
+            return {
+                ...state, evaluationString: '', result: math.evaluate(`${state.evaluationString}`)
+            }
         }
         default:
             throw Error('Unknown action: ' + action.type)
