@@ -43,12 +43,22 @@ function calculatorReducer(state, action) {
             if (action.btnValue === 'X') action.btnValue = '*';
 
             return {
-                ...state, evaluationString: `${state.evaluationString}${action.btnValue}`
+                ...state,
+                evaluationString: `${state.evaluationString}${action.btnValue}`
             }
         }
         case 'equal': {
             return {
-                ...state, evaluationString: evaluate(`${state.evaluationString}`), result: evaluate(`${state.evaluationString}`)
+                ...state,
+                evaluationString: evaluate(`${state.evaluationString}`),
+                result: evaluate(`${state.evaluationString}`)
+            }
+        }
+        case 'clear': {
+            return {
+                ...state,
+                evaluationString: '',
+                result: 0
             }
         }
         default:
