@@ -53,12 +53,11 @@ export function calculatorReducer(state, action) {
         case 'equal': {
             return {
                 ...state,
-                evaluationString: evaluate(`${str}`),
+                evaluationString: `${evaluate(`${str}`)}`,
                 result: evaluate(`${str}`)
             }
         }
         case 'backSpace': {
-
             if (str != '') {
                 str = str.slice(0, -1);
             }
