@@ -1,6 +1,6 @@
 import {createContext, useContext, useReducer} from 'react';
 import PropTypes from "prop-types";
-import {evaluate} from 'mathjs';
+import {evaluate, max} from 'mathjs';
 
 const CalculatorContext = createContext(null);
 const CalculatorDispatch = createContext(null);
@@ -58,14 +58,8 @@ export function calculatorReducer(state, action) {
             }
         }
         case 'backSpace': {
-            if (str != '') {
-                str = str.slice(0, -1);
-            }
-
-            if (str == '') {
-                str = '';
-                res = 0
-            }
+            if (str != '') str = str.slice(0, -1);
+            if (str == '') res = 0
 
             return {
                 ...state,
