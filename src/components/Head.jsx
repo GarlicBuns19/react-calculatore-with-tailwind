@@ -2,12 +2,10 @@ import {useCalculator} from "../contexts/Calculator.jsx";
 
 export function Head(props) {
     const cal = useCalculator();
-    const operatorArr = ['+', '-', '*', '/', '.'];
+    const operatorArr = ['+', '-', '*', '/', '.', '%'];
 
     if (operatorArr.includes(cal.evaluationString.at(-2)) && operatorArr.includes(cal.evaluationString.at(-1))) {
-        console.log('Yes')
-    } else {
-        console.log('No')
+        cal.evaluationString = cal.evaluationString.slice(0, -1)
     }
 
     return (
