@@ -1,4 +1,4 @@
-import {createContext, useContext, useReducer} from 'react';
+import {createContext, useContext, useEffect, useReducer} from 'react';
 import PropTypes from "prop-types";
 import {evaluate, max} from 'mathjs';
 
@@ -15,6 +15,18 @@ export function CalculatorProvider({children}) {
         calculatorReducer,
         initialCalculator
     );
+
+    function handleKeyEvent (e) {
+        // console.log(e)
+        dispatch({
+            type: 'input',
+            btnValue: e.key
+        })
+    }
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyEvent)
+    }, []);
 
     return (
         <CalculatorContext.Provider value={state}>
