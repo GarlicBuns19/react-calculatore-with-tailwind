@@ -10,14 +10,14 @@ export const initialCalculator = {
     result: 0
 }
 
+const numArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+const operatorArr = ['+', '-', '*', '/', '.'];
 export function CalculatorProvider({children}) {
     const [state, dispatch] = useReducer(
         calculatorReducer,
         initialCalculator
     );
 
-    const numArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    const operatorArr = ['+', '-', '*', '/', '.']
 
     function handleKeyEvent(e) {
         // console.log(e)
