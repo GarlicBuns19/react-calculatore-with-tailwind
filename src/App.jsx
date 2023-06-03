@@ -3,10 +3,14 @@ import {Head} from './components/Head';
 import {Button} from './components/Button';
 import {CalculatorHistory} from './components/CalculatorHistory';
 import {createPortal} from 'react-dom';
+import {useEffect} from "react";
 
 const calculatorHistory = document.getElementById('calculatorHistory');
 
 function App() {
+    useEffect(() => {
+        document.addEventListener('keydown', (e) => console.log(e.key))
+    }, []);
 
     return (
         <div className="bg-slate-800">

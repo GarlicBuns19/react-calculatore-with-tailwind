@@ -6,7 +6,7 @@ export function CalculatorHistory(props) {
     return (
         <div>
             <h2>History</h2>
-            {cal.history.map((e) => <div key={e.id}>{e.cal}</div>)}
+            {cal.history.map((item,index) => <div key={index}>{item.cal}</div>)}
         </div>
     );
 }

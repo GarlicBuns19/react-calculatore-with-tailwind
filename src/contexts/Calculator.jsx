@@ -55,7 +55,6 @@ export function calculatorReducer(state, action) {
                 ...state,
                 evaluationString: `${evaluate(`${str}`)}`,
                 history: [...state.history, {
-                    id: state.history.length + 1,
                     cal: `${str} = ${evaluate(`${str}`)}`
                 }],
                 result: evaluate(`${str}`)
