@@ -16,12 +16,17 @@ export function CalculatorProvider({children}) {
         initialCalculator
     );
 
-    function handleKeyEvent (e) {
+    const numArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    const operatorArr = ['+', '-', '*', '/', '.']
+
+    function handleKeyEvent(e) {
         // console.log(e)
-        dispatch({
-            type: 'input',
-            btnValue: e.key
-        })
+        if (numArr.includes(e.key) || operatorArr.includes(e.key)) {
+            dispatch({
+                type: 'input',
+                btnValue: e.key
+            })
+        }
     }
 
     useEffect(() => {
