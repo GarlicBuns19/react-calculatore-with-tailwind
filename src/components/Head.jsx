@@ -10,7 +10,7 @@ export function Head(props) {
 
     return (
         <div className={"mb-2 p-2 border-2 border-solid rounded-md"}>
-            <div className={"p-5 text-lg text-right bg-zinc-600 rounded-md"}>{cal.evaluationString || cal.result}</div>
+            <div className={"p-5 text-lg text-right bg-zinc-600 rounded-md w-96 overflow-x-auto"}>{cal.evaluationString || cal.result}</div>
         </div>
     )
 }
