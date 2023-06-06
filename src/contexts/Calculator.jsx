@@ -68,13 +68,15 @@ export function calculatorReducer(state, action) {
             }
         }
         case 'equal': {
+            let answer = `${evaluate(`${str}`)}`;
+
             return {
                 ...state,
-                evaluationString: `${evaluate(`${str}`)}`,
+                evaluationString: answer,
                 history: [...state.history, {
-                    cal: `${str} = ${evaluate(`${str}`)}`
+                    cal: `${str} = ${answer}`
                 }],
-                result: evaluate(`${str}`)
+                result: answer
             }
         }
         case 'backSpace': {
