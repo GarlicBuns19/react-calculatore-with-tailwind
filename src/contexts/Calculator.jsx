@@ -99,6 +99,8 @@ export function calculatorReducer(state, action) {
                     result: answer
                 }
             } catch (e) {
+                alert('You broke the calculator');
+
                 return {
                     ...state,
                     evaluationString: '',
