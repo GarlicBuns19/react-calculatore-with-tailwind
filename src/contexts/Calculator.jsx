@@ -19,10 +19,15 @@ export function CalculatorProvider({children}) {
         initialCalculator
     );
 
-
     function handleKeyEvent(e) {
+        console.log(e)
         // console.log(e)
-        if (numArr.includes(e.key) || operatorArr.includes(e.key)) {
+        if (e.key === 'Enter') {
+            dispatch({
+                type: 'equal',
+                btnValue: ''
+            })
+        } else if (numArr.includes(e.key) || operatorArr.includes(e.key)) {
             dispatch({
                 type: 'input',
                 btnValue: e.key
