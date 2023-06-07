@@ -4,7 +4,7 @@ export function CalculatorHistory(props) {
     const cal = useCalculator();
 
     if (cal.history.length > 0) return (
-        <div>
+        <div className={"w-96 max-h-screen overflow-y-auto"}>
             <h2>Calculation History</h2>
             {cal.history.map((item, index) => <div key={index}>{item.cal}</div>)}
         </div>
