@@ -80,22 +80,30 @@ export function calculatorReducer(state, action) {
             }
         }
         case 'equal': {
-            let answer = `${evaluate(`${evalStr}`)}`;
-            let addHis = [...state.history, {
-                cal: `${evalStr} = ${answer}`
-            }]
+            try {
+                let answer = `${evaluate(`${evalStr}`)}`;
+                let addHis = [...state.history, {
+                    cal: `${evalStr} = ${answer}`
+                }]
 
-            if (answer === 'undefined') {
+                if (answer === 'undefined' || answer === 'Infinity') {
+                    return {
+                        ...state,
+                        evaluationString: '',
+                        result: '0'
+                    }
+                } else return {
+                    ...state,
+                    evaluationString: answer,
+                    history: addHis,
+                    result: answer
+                }
+            } catch (e) {
                 return {
                     ...state,
-                    evaluationString: evalStr,
+                    evaluationString: '',
                     result: '0'
                 }
-            } else return {
-                ...state,
-                evaluationString: answer,
-                history: addHis,
-                result: answer
             }
         }
         case 'backSpace': {
