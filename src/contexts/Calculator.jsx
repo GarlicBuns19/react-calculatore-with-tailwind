@@ -27,7 +27,12 @@ export function CalculatorProvider({children}) {
                 type: 'equal',
                 btnValue: ''
             })
-        } else if (numArr.includes(e.key) || operatorArr.includes(e.key)) {
+        } else if (e.key === 'Backspace') {
+            dispatch({
+                type: 'backSpace',
+                btnValue: ''
+            })
+        }else if (numArr.includes(e.key) || operatorArr.includes(e.key)) {
             dispatch({
                 type: 'input',
                 btnValue: e.key
