@@ -12,6 +12,7 @@ export const initialCalculator = {
 
 const numArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const operatorArr = ['+', '-', '*', '/', '.', '%'];
+
 export function CalculatorProvider({children}) {
     const [state, dispatch] = useReducer(
         calculatorReducer,
@@ -55,37 +56,45 @@ export function useCalculatorDispatch() {
 }
 
 export function calculatorReducer(state, action) {
-    let str = state.evaluationString;
+    let evalStr = state.evaluationString;
     let res = state.result;
 
     switch (action.type) {
         case 'input': {
             if (action.btnValue === 'X') action.btnValue = '*';
+            if (!numArr.includes(action.btnValue) && evalStr === '') action.btnValue = '';
 
             return {
                 ...state,
-                evaluationString: `${str}${action.btnValue}`
+                evaluationString: `${evalStr}${action.btnValue}`
             }
         }
         case 'equal': {
-            let answer = `${evaluate(`${str}`)}`;
+            let answer = `${evaluate(`${evalStr}`)}`;
+            let addHis = [...state.history, {
+                cal: `${evalStr} = ${answer}`
+            }]
 
-            return {
+            if (answer === 'undefined') {
+                return {
+                    ...state,
+                    evaluationString: evalStr,
+                    result: '0'
+                }
+            } else return {
                 ...state,
                 evaluationString: answer,
-                history: [...state.history, {
-                    cal: `${str} = ${answer}`
-                }],
+                history: addHis,
                 result: answer
             }
         }
         case 'backSpace': {
-            if (str != '') str = str.slice(0, -1);
-            if (str == '') res = 0
+            if (evalStr != '') evalStr = evalStr.slice(0, -1);
+            if (evalStr == '') res = 0
 
             return {
                 ...state,
-                evaluationString: str,
+                evaluationString: evalStr,
                 result: res
             }
         }
